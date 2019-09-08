@@ -9,6 +9,14 @@ body {
   font-family: 'Playfair Display', serif;
 }
 
+.red{
+  background-color: red;
+}
+
+.blue{
+  background-color: blue;
+}
+
 #quote-box {
   position: absolute;
   top: 20%;
@@ -16,6 +24,7 @@ body {
   right: 10%;
   width: 80%;
   line-height: .5;
+  text-transform: capitalize;
 }
 
 .quote {
@@ -24,6 +33,7 @@ body {
   line-height: 1.1;
   position: relative;
   margin: 0;
+  text-transform: none;
 }
 
 .quote:before, .quote:after {
@@ -67,6 +77,11 @@ body {
 }
 
 .year:before {
+  content: ", ";
+  font-style: normal;
+}
+
+.category:before{
   content: ", ";
   font-style: normal;
 }
