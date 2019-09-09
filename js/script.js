@@ -1,6 +1,6 @@
 /******************************************
-Treehouse FSJS Techdegree:
-project 1 - A Random Quote Generator
+ A Random Quote Generator
+ - Ritesh Maharjan
 ******************************************/
 
 
@@ -96,28 +96,50 @@ function printQuote(){
 
   htmlQuote += '</p>';
 
+  colorChange();
+
   document.getElementById('quote-box').innerHTML = htmlQuote;
 }
 
 
-// function colorChange(){
+function colorChange(){
 
-//   var rand = Math.floor(Math.random()*2);
-//   var htmlQuote = "";
+  var rand = Math.floor(Math.random()*3);
+  console.log(rand);
+  var backgroundEle = document.getElementById("background");
+  var loadEle = document.getElementById("loadQuote");
 
-//   if(rand = 1){
-//     htmlQuote += '<p class="quote">';
-//   }
-//   else if(rand = 2){
-//     htmlQuote += '<p class="quote">' + quotes[randQuote].quote +' </p>'
-//   }
+  if(rand == 1){
+    backgroundEle.classList.add("color1");
+    backgroundEle.classList.remove("color2");
+    loadEle.classList.add("color1");
+    loadEle.classList.remove("color2");
+    backgroundEle.classList.remove("color3");
+    loadEle.classList.remove("color3");
+  }
+  else if(rand == 2){
+    backgroundEle.classList.add("color2");
+    backgroundEle.classList.remove("color1");
+    loadEle.classList.add("color2");
+    loadEle.classList.remove("color1");
+    backgroundEle.classList.remove("color3");
+    loadEle.classList.remove("color3");
+  }
+  else{
+    backgroundEle.classList.remove("color1");
+    loadEle.classList.remove("color1");
+    backgroundEle.classList.remove("color2");
+    loadEle.classList.remove("color2");
+    backgroundEle.classList.add("color3");
+    loadEle.classList.add("color3");
+  }
 
-// }
+}
 
 
-// Runs the printQuotes function every 5 second to change the quotes
-setInterval(printQuote, 5000);
-// setInterval(colorChange, 5000);
+// Runs the printQuote and colourChange function every 20 second to change the quotes
+setInterval(printQuote, 20000);
+setInterval(colorChange, 20000);
 
 // Calling the printQuote function to change the quote when show another quote button is pressed
 

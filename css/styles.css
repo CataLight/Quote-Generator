@@ -9,12 +9,16 @@ body {
   font-family: 'Playfair Display', serif;
 }
 
-.red{
-  background-color: red;
+.color1{
+  background-color: #FF851B;
 }
 
-.blue{
-  background-color: blue;
+.color2{
+  background-color: #0074D9;
+}
+
+.color3{
+  background-color: #36b55c;
 }
 
 #quote-box {
@@ -96,7 +100,6 @@ body {
   border-radius: 4px;
   border: 2px solid #fff;
   color: #fff;
-  background-color: #36b55c;
   padding: 15px 0;
   transition: .5s ;
 }
