@@ -102,6 +102,7 @@ function printQuote(){
 }
 
 
+//add class to the body tag to change color
 function colorChange(){
 
   var rand = Math.floor(Math.random()*3);
