@@ -3,9 +3,8 @@
  - Ritesh Maharjan
 ******************************************/
 
+// Array storing quotes in object with properties of quote, citation, source and year'
 
-
-// Array storing quotes in object with properties of quote, citation, source and year
 var quotes = [
 
   {
@@ -71,11 +70,6 @@ function getRandomQuote(){
 }
 
 
-// Runs the printQuote function every 5 second to change the quotes
-var timer = function(){
-  setInterval(printQuote, 5000);
-}
-
 // Function that replaces the HTML to put new quote
 function printQuote(){
   var randQuote = getRandomQuote();
@@ -97,9 +91,14 @@ function printQuote(){
 
   htmlQuote += '</p>';
 
+  //Changing the color and resetting the interval time
   colorChange();
-  timer();
+  clearInterval(timer);
+
   document.getElementById('quote-box').innerHTML = htmlQuote;
+
+  //setting up the timer to change the quote every 20 sec
+  var timer = setInterval(printQuote, 20000);
 }
 
 
@@ -108,6 +107,7 @@ function colorChange(){
 
   var rand = Math.floor(Math.random()*3);
   console.log(rand);
+  //assigning value to the variable in order to add class and change color
   var backgroundEle = document.getElementById("background");
   var loadEle = document.getElementById("loadQuote");
 
@@ -135,10 +135,11 @@ function colorChange(){
     backgroundEle.classList.add("color3");
     loadEle.classList.add("color3");
   }
-
 }
+
+
 // Calling the printQuote function to change the quote when show another quote button is pressed
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 
-
+//calling the printQuote in order to change the quotes
 printQuote();
