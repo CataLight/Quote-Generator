@@ -6,7 +6,6 @@
 
 
 // Array storing quotes in object with properties of quote, citation, source and year
-
 var quotes = [
 
   {
@@ -67,15 +66,17 @@ var quotes = [
 ];
 
 // Function that generates a random number in order to generate random quotes
-
 function getRandomQuote(){
-
   return Math.floor(Math.random()*quotes.length);
-  
+}
+
+
+// Runs the printQuote function every 5 second to change the quotes
+var timer = function(){
+  setInterval(printQuote, 5000);
 }
 
 // Function that replaces the HTML to put new quote
-
 function printQuote(){
   var randQuote = getRandomQuote();
   var htmlQuote = '';
@@ -97,7 +98,7 @@ function printQuote(){
   htmlQuote += '</p>';
 
   colorChange();
-
+  timer();
   document.getElementById('quote-box').innerHTML = htmlQuote;
 }
 
@@ -136,13 +137,8 @@ function colorChange(){
   }
 
 }
-
-
-// Runs the printQuote and colourChange function every 20 second to change the quotes
-setInterval(printQuote, 20000);
-setInterval(colorChange, 20000);
-
 // Calling the printQuote function to change the quote when show another quote button is pressed
-
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 
+
+printQuote();
