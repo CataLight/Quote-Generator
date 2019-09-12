@@ -66,39 +66,44 @@ var quotes = [
 
 // Function that generates a random number in order to generate random quotes
 function getRandomQuote(){
-  return Math.floor(Math.random()*quotes.length);
+  var randNum = Math.floor(Math.random()*quotes.length);
+
+  return quotes[randNum];
 }
 
+var addTimer;
+//setting up the timer to change the quote every 20 sec and clearing the old timer
+function timer(){
+  clearInterval(addTimer);
+  addTimer = setInterval(printQuote, 5000);
+}
 
 // Function that replaces the HTML to put new quote
 function printQuote(){
   var randQuote = getRandomQuote();
   var htmlQuote = '';
 
-  htmlQuote += '<p class="quote">' + quotes[randQuote].quote +' </p>'
-  htmlQuote += '<p class="source">' + quotes[randQuote].source;
+  htmlQuote += '<p class="quote">' + randQuote.quote +' </p>'
+  htmlQuote += '<p class="source">' + randQuote.source;
 
   // Check to see if there is value on citation and year, if no value then dont show on HTML
-  if(quotes[randQuote].citation != null){
-    htmlQuote += '<span class="citation">' + quotes[randQuote].citation + '</span>';
+  if(randQuote.citation != null){
+    htmlQuote += '<span class="citation">' + randQuote.citation + '</span>';
   }
-  if(quotes[randQuote].year != null){
-    htmlQuote += ' <span class="year"> ' +  quotes[randQuote].year + '</span>';
+  if(randQuote.year != null){
+    htmlQuote += ' <span class="year"> ' +  randQuote.year + '</span>';
   }
-  if(quotes[randQuote].category != null){
-    htmlQuote += ' <span class="category"> ' +  quotes[randQuote].category + '</span>';
+  if(randQuote.category != null){
+    htmlQuote += ' <span class="category"> ' +  randQuote.category + '</span>';
   }
 
   htmlQuote += '</p>';
 
   //Changing the color and resetting the interval time
   colorChange();
-  clearInterval(timer);
 
   document.getElementById('quote-box').innerHTML = htmlQuote;
-
-  //setting up the timer to change the quote every 20 sec
-  var timer = setInterval(printQuote, 20000);
+  timer();  
 }
 
 
