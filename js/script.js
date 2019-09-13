@@ -3,6 +3,11 @@
  - Ritesh Maharjan
 ******************************************/
 
+// Declaring global variables
+
+var sameQuote, sameColour = 0;
+
+
 // Array storing quotes in object with properties of quote, citation, source and year'
 
 var quotes = [
@@ -64,9 +69,18 @@ var quotes = [
 
 ];
 
+
 // Function that generates a random number in order to generate random quotes
 function getRandomQuote(){
-  var randNum = Math.floor(Math.random()*quotes.length);
+  var randNum;
+
+  // run if the samequote and randnum matches in order to avoid having same quotes
+  do{
+    randNum = Math.floor(Math.random()*quotes.length);
+  }while(sameQuote == randNum);
+
+  // assigning randNum value to samequote in order for the do while to run
+  sameQuote = randNum;
 
   return quotes[randNum];
 }
@@ -75,7 +89,7 @@ var addTimer;
 //setting up the timer to change the quote every 20 sec and clearing the old timer
 function timer(){
   clearInterval(addTimer);
-  addTimer = setInterval(printQuote, 5000);
+  addTimer = setInterval(printQuote, 3000);
 }
 
 // Function that replaces the HTML to put new quote
@@ -103,20 +117,29 @@ function printQuote(){
   colorChange();
 
   document.getElementById('quote-box').innerHTML = htmlQuote;
-  timer();  
+  timer();
 }
 
 
 //add class to the body tag to change color
 function colorChange(){
+  
+  var rand;
+  
+  // checks to see if rand matches with samecolour in order to avoid having same colour
+  do{
+    rand = Math.floor(Math.random()*3);
+  }while(rand == sameColour);
 
-  var rand = Math.floor(Math.random()*3);
-  console.log(rand);
+  //assigning rand value to samecolour in order for the do while to run
+  sameColour = rand;
+
   //assigning value to the variable in order to add class and change color
   var backgroundEle = document.getElementById("background");
   var loadEle = document.getElementById("loadQuote");
 
-  if(rand == 1){
+  //adds the colour depending upon the rand value generated through random number
+  if(rand == 0){
     backgroundEle.classList.add("color1");
     backgroundEle.classList.remove("color2");
     loadEle.classList.add("color1");
@@ -124,7 +147,7 @@ function colorChange(){
     backgroundEle.classList.remove("color3");
     loadEle.classList.remove("color3");
   }
-  else if(rand == 2){
+  else if(rand == 1){
     backgroundEle.classList.add("color2");
     backgroundEle.classList.remove("color1");
     loadEle.classList.add("color2");
@@ -140,6 +163,8 @@ function colorChange(){
     backgroundEle.classList.add("color3");
     loadEle.classList.add("color3");
   }
+
+  return sameColour;
 }
 
 
