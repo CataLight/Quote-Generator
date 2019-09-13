@@ -89,7 +89,7 @@ var addTimer;
 //setting up the timer to change the quote every 20 sec and clearing the old timer
 function timer(){
   clearInterval(addTimer);
-  addTimer = setInterval(printQuote, 3000);
+  addTimer = setInterval(printQuote, 20000);
 }
 
 // Function that replaces the HTML to put new quote
